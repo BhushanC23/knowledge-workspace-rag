@@ -1,0 +1,35 @@
+# Secrets and local environment files
+.env
+*.env
+!.env.example
+
+# Python cache and build artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environment internals
+Backend/myvenv/Lib/
+Backend/myvenv/Scripts/
+Backend/myvenv/Include/
+Backend/myvenv/etc/
+Backend/myvenv/share/
+Backend/myvenv/pyvenv.cfg
+Backend/myvenv/chroma_db/
+
+# Local vector database data
+Backend/chroma_db/
+
+# Local editor and agent metadata
+.vscode/*
+!.vscode/settings.json
+Frontend/.agents/
+Frontend/.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
