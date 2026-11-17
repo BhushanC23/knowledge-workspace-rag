@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 from database import addData, getData
-from services import findResponse
+from service import findResponse
 
 app = FastAPI(title="RAG Application")
 
@@ -32,4 +32,13 @@ def getCollectionData():
 @app.post("/chat")
 def getResponse(query: ChatInput):
     response = findResponse(query.prompt)
+    if isinstance(response, dict):
+        return {
+            "response": response.get(
+                "answer",
+                "I could not generate a response."
+            ),
+            "tools_used": response.get("tools_used", [])
+        }
+
     return {"response": response}
